@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FNS Laboratory Report</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    .header h1 {
+      color: #2c3e50;
+      margin: 0;
+    }
+    .patient-info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .patient-info h2 {
+      color: #3498db;
+      margin-top: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .info-row {
+      display: flex;
+      margin-bottom: 8px;
+    }
+    .info-label {
+      font-weight: bold;
+      width: 150px;
+      color: #2c3e50;
+    }
+    .info-value {
+      flex: 1;
+    }
+    .analysis-section {
+      margin-bottom: 30px;
+    }
+    .analysis-section h2 {
+      color: #3498db;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+    .lab-signature {
+      margin-top: 40px;
+      text-align: right;
+      border-top: 1px dashed #7f8c8d;
+      padding-top: 10px;
+    }
+    .notes {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-radius: 5px;
+      border-left: 4px solid #2196f3;
+      margin-bottom: 20px;
+    }
+    img.analysis-image {
+      width: 100%;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+      img.analysis-image {
+        transform: scale(1.1);
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Medical Laboratory Report</h1>
+      <p>Hope Medical Laboratory</p>
+    </div>
+
+    <div class="patient-info">
+      <h2>Patient Information</h2>
+      <div class="info-row"><span class="info-label">Patient Name:</span><span class="info-value">Boutaina Kh</span></div>
+      <div class="info-row"><span class="info-label">Medical Record #:</span><span class="info-value">FNS-2024-1052</span></div>
+      <div class="info-row"><span class="info-label">Age:</span><span class="info-value">24 years</span></div>
+      <div class="info-row"><span class="info-label">Gender:</span><span class="info-value">Female</span></div>
+      <div class="info-row"><span class="info-label">Date of Test:</span><span class="info-value">June 6, 2025</span></div>
+      <div class="info-row"><span class="info-label">Referring Physician:</span><span class="info-value">Dr. Sarah Johnson</span></div>
+      <div class="info-row"><span class="info-label">Test Requested:</span><span class="info-value">Complete Blood Count (FNS)</span></div>
+    </div>
+
+    <div class="notes">
+      <h3>FNS (Full Blood Count) Overview</h3>
+      <p>The Full Blood Count (FNS) is a fundamental hematological test used to evaluate overall health and detect a wide range of disorders, including anemia, infection, and hematologic diseases.</p>
+      <p>This test measures several components of blood, including Red Blood Cells (RBC), White Blood Cells (WBC), Hemoglobin (Hb), Hematocrit (HCT), and Platelets (PLT).</p>
+    </div>
+
+    <div class="analysis-section">
+      <h2>FNS Test Results</h2>
+      <img src="assets/images/version2/photo_2025-06-11_23-33-21.jpg" alt="FNS Test Results" class="analysis-image" onclick="openModal(this.src)">
+    </div>
+
+    <div class="analysis-section">
+      <h2>Physician's Comments</h2>
+      <div style="background-color: #fff8e1; padding: 15px; border-radius: 5px; border-left: 4px solid #fbc02d;">
+        <p>The patient’s FNS results show the following observations:</p>
+        <ul>
+          <li><strong>Hemoglobin (Hb):</strong> Slightly below normal range, indicating mild anemia.</li>
+          <li><strong>White Blood Cells (WBC):</strong> Within normal limits, no signs of acute infection.</li>
+          <li><strong>Red Blood Cells (RBC) & Hematocrit (HCT):</strong> Mildly decreased, consistent with iron-deficiency anemia.</li>
+          <li><strong>Platelets:</strong> Normal count and morphology.</li>
+        </ul>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+          <li>Initiate iron supplementation therapy.</li>
+          <li>Review dietary iron intake and consider nutrition counseling.</li>
+          <li>Repeat FNS in 6 weeks to monitor progress.</li>
+          <li>No evidence of infection or hematologic malignancy at this time.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab-signature">
+      <p>Physician's Signature: ________________________</p>
+      <p>Dr. Sarah Johnson</p>
+      <p>Hematology Consultant</p>
+      <p>License #: HEM-783456</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal(event)">
+    <span class="modal-close" onclick="closeModal(event)">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    function openModal(src) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modal.style.display = "block";
+      modalImg.src = src;
+    }
+
+    function closeModal(event) {
+      if (event.target.id === "imageModal" || event.target.className === "modal-close") {
+        document.getElementById("imageModal").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
